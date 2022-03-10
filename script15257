@@ -46,7 +46,7 @@ local Event = game:GetService("Workspace")["__THINGS"]["__REMOTES"]["invite to b
 Event:InvokeServer(A_1)
 end
 
-function Run()
+return function()
 key = string.sub(key, 3, #key-2)
 local ObSys = {"x", "Y", "d", "f", "t", "s", "p", "R", "_", "o"}
 local userid = ""
