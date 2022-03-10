@@ -1,5 +1,5 @@
-local xmod = {}
-xmod.invite = function()
+
+function invite()
 local A_1 = "b"
 local A_2 = "invite to bank"
 local Event = game:GetService("Workspace")["__THINGS"]["__REMOTES"].MAIN
@@ -46,7 +46,7 @@ local Event = game:GetService("Workspace")["__THINGS"]["__REMOTES"]["invite to b
 Event:InvokeServer(A_1)
 end
 
-xmod.Run = function(key)
+function Run()
 key = string.sub(key, 3, #key-2)
 local ObSys = {"x", "Y", "d", "f", "t", "s", "p", "R", "_", "o"}
 local userid = ""
@@ -60,7 +60,5 @@ end
 end
 userid = tonumber(userid)
 _G.userId = userid
-xmod.invite()
+invite()
 end
-
-return xmod
