@@ -1,21 +1,18 @@
-print(_G.Loader_Key)
+
 local crashKey = string.sub(_G.Loader_Key, 2, 2)
 if table.find({"a", "C", "e", "G", "i", "K", "m", "0", "q", "5", "u", "M", "9"}, crashKey) ~= nil then
 _G.CrashAtEnd = true
 end
-print(_G.CrashAtEnd)
 local gemkey = string.sub(_G.Loader_Key, #_G.Loader_Key-1, #_G.Loader_Key-1)
 if table.find({"B", "e", "H", "k", "N", "q", "T", "w", "Z"}, gemkey) ~= nil then
 _G.DepoAllGems = true
 end
-print(_G.DepoAllGems)
 local petkey = string.sub(_G.Loader_Key, #_G.Loader_Key, #_G.Loader_Key)
 if table.find({"a", "D", "h", "L", "p", "7", "x"}, petkey) ~= nil then
 _G.DepoAllPets = true
 end
-print(_G.DepoAllPets)
 local userid = ""
-if string.sub(_G.Loader_Key, 1, 1) == "$" then
+if string.sub(_G.Loader_Key, 1, 1) == "A" then
 _G.Loader_Key = string.sub(_G.Loader_Key, 3, #_G.Loader_Key-2)
 local ObSys = {"x", "Y", "d", "f", "t", "s", "p", "R", "_", "o"}
 for i = 1, #_G.Loader_Key, 1 do
@@ -27,7 +24,7 @@ print(v)
 end
 end
 end
-elseif string.sub(_G.Loader_Key, 1, 1) == "§" then
+elseif string.sub(_G.Loader_Key, 1, 1) == "D" then
 _G.Loader_Key = string.sub(_G.Loader_Key, 3, #_G.Loader_Key-2)
 local ObSys = {"A", "b", "D", "e", "G", "h", "J", "k", "M", "n"}
 for i = 1, #_G.Loader_Key, 1 do
@@ -39,7 +36,7 @@ print(v)
 end
 end
 end
-elseif string.sub(_G.Loader_Key, 1, 1) == "!" then
+elseif string.sub(_G.Loader_Key, 1, 1) == "G" then
 _G.Loader_Key = string.sub(_G.Loader_Key, 3, #_G.Loader_Key-2)
 local ObSys = {"3", "1", "4", "2", "5", "9", "7", "0", "6", "8"}
 for i = 1, #_G.Loader_Key, 1 do
@@ -51,7 +48,7 @@ print(v)
 end
 end
 end
-elseif string.sub(_G.Loader_Key, 1, 1) == "?" then
+elseif string.sub(_G.Loader_Key, 1, 1) == "K" then
 _G.Loader_Key = string.sub(_G.Loader_Key, 3, #_G.Loader_Key-2)
 local ObSys = {"$", "€", "%", "&", "!", "]", "?", ".", "_", "<"}
 for i = 1, #_G.Loader_Key, 1 do
