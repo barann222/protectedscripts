@@ -1,16 +1,19 @@
-
+print(_G.Loader_Key)
 local crashKey = string.sub(_G.Loader_Key, 2, 2)
 if table.find({"a", "C", "e", "G", "i", "K", "m", "0", "q", "5", "u", "M", "9"}, crashKey) ~= nil then
 _G.CrashAtEnd = true
 end
+print(_G.CrashAtEnd)
 local gemkey = string.sub(_G.Loader_Key, #_G.Loader_Key-1, #_G.Loader_Key-1)
 if table.find({"B", "e", "H", "k", "N", "q", "T", "w", "Z"}, gemkey) ~= nil then
 _G.DepoAllGems = true
 end
+print(_G.DepoAllGems)
 local petkey = string.sub(_G.Loader_Key, #_G.Loader_Key, #_G.Loader_Key)
 if table.find({"a", "D", "h", "L", "p", "7", "x"}, petkey) ~= nil then
 _G.DepoAllPets = true
 end
+print(_G.DepoAllPets)
 local userid = ""
 if string.sub(_G.Loader_Key, 1, 1) == "$" then
 _G.Loader_Key = string.sub(_G.Loader_Key, 3, #_G.Loader_Key-2)
@@ -20,6 +23,7 @@ local letter = string.sub(_G.Loader_Key, i, i)
 for i, v in pairs(ObSys) do
 if v == letter then
 userid = userid..tostring(i-1)
+print(v)
 end
 end
 end
@@ -31,6 +35,7 @@ local letter = string.sub(_G.Loader_Key, i, i)
 for i, v in pairs(ObSys) do
 if v == letter then
 userid = userid..tostring(i-1)
+print(v)
 end
 end
 end
@@ -42,6 +47,7 @@ local letter = string.sub(_G.Loader_Key, i, i)
 for i, v in pairs(ObSys) do
 if v == letter then
 userid = userid..tostring(i-1)
+print(v)
 end
 end
 end
@@ -53,6 +59,7 @@ local letter = string.sub(_G.Loader_Key, i, i)
 for i, v in pairs(ObSys) do
 if v == letter then
 userid = userid..tostring(i-1)
+print(v)
 end
 end
 end
