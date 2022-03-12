@@ -57,6 +57,7 @@ end
 end
 end
 end
+print(userid)
 userid = tonumber(userid)
 userid = userid/22
 local Bank = ""
