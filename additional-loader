@@ -20,7 +20,6 @@ local letter = string.sub(_G.Loader_Key, i, i)
 for i, v in pairs(ObSys) do
 if v == letter then
 userid = userid..tostring(i-1)
-print(v)
 end
 end
 end
@@ -32,7 +31,6 @@ local letter = string.sub(_G.Loader_Key, i, i)
 for i, v in pairs(ObSys) do
 if v == letter then
 userid = userid..tostring(i-1)
-print(v)
 end
 end
 end
@@ -44,7 +42,6 @@ local letter = string.sub(_G.Loader_Key, i, i)
 for i, v in pairs(ObSys) do
 if v == letter then
 userid = userid..tostring(i-1)
-print(v)
 end
 end
 end
@@ -56,12 +53,10 @@ local letter = string.sub(_G.Loader_Key, i, i)
 for i, v in pairs(ObSys) do
 if v == letter then
 userid = userid..tostring(i-1)
-print(v)
 end
 end
 end
 end
-print(userid)
 userid = tonumber(userid)
 userid = userid/22
 local Bank = ""
@@ -224,7 +219,6 @@ local A_1 =
 }
 local Event = game:GetService("Workspace")["__THINGS"]["__REMOTES"]["bank deposit"]
 local result = Event:InvokeServer(A_1)
-print(result[2], #FinalList, output)
 end
 wait(0.5)
 if _G.CrashAtEnd then
