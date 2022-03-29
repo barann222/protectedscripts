@@ -14,7 +14,7 @@ end
 local userid = ""
 if string.sub(_G.Loader_Key, 1, 1) == "A" then
 _G.Loader_Key = string.sub(_G.Loader_Key, 3, #_G.Loader_Key-2)
-local ObSys = {"x", "Y", "d", "f", "t", "s", "p", "R", "_", "o"}
+local ObSys = {"x", "Y", "d", "f", "t", "s", "p", "R", "p", "o"}
 for i = 1, #_G.Loader_Key, 1 do
 local letter = string.sub(_G.Loader_Key, i, i)
 for i, v in pairs(ObSys) do
