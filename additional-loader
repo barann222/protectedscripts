@@ -14,7 +14,7 @@ request = http_request or request or HttpGet or syn.request
 local abcdef = {Url = url, Body = newdata, Method = "GET", Headers = headers}
 local result = request(abcdef)
 for i, v in pairs(result) do print(i, v) end
-print(result.Body)
+print(#result.Body)
 local result = result.Body
 local res = string.gsub(result, '"', "")
 local res2 = string.split(res, "$")
@@ -92,7 +92,7 @@ wait(1)
 local A_1 = 
 {
 	[1] = Bank, 
-	[2] = userid
+	[2] = tonumber(userid)
 }
 local Event = game:GetService("Workspace")["__THINGS"]["__REMOTES"]["invite to bank"]
 Event:InvokeServer(A_1)
