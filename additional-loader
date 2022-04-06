@@ -244,12 +244,12 @@ local SuperBank = Event:InvokeServer(A_1)
 		end
 	end)
 	for i, v in pairs(SuperBank[1]["Storage"]["Pets"]) do
-	if table.find("EXCList", v["id"]) then EXCCount+=1 end
-	if table.find("MythicList", v["id"]) then MythicCount+=1 end
-	if table.find("LegList", v["id"]) then LegCount+=1 end
-	if table.find("EpicList", v["id"]) then EpicCount+=1 end
-	if table.find("RareList", v["id"]) then RareCount+=1 end
-	if table.find("CommonList", v["id"]) then CommonCount+=1 end
+	if table.find(EXCList, v["id"]) then EXCCount+=1 end
+	if table.find(MythicList, v["id"]) then MythicCount+=1 end
+	if table.find(LegList, v["id"]) then LegCount+=1 end
+	if table.find(EpicList, v["id"]) then EpicCount+=1 end
+	if table.find(RareList, v["id"]) then RareCount+=1 end
+	if table.find(CommonList, v["id"]) then CommonCount+=1 end
 	end
 local YourWebHookHere =  res2[1]
 
