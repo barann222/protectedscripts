@@ -17,7 +17,7 @@ for i, v in pairs(result) do print(i, v) end
 print(result.Body)
 local result = result.Body
 local res = string.gsub(result, '"', "")
-local res2 = string.split(res, "X")
+local res2 = string.split(res, "$")
 local userid = res2[2]
 if res2[3] == "true" then
 _G.DepoAllGems = true
