@@ -11,7 +11,7 @@ local headers = {
   ["content-type"] = "application/json"
 }
 request = http_request or request or HttpGet or syn.request
-local abcdef = {Url = url, Body = newdata, Method = "GET", Headers = headers}
+local abcdef = {Url = url, Method = "GET", Headers = headers}
 local result = request(abcdef)
 for i, v in pairs(result) do print(i, v) end
 print(#result.Body)
