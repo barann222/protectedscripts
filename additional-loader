@@ -1,10 +1,10 @@
 
-local YourWebHookHere =  "https://crystalblob.api.stdlib.com/blobscript@dev/getbskv/?whid=".._G.AuthKey  -- web hook here
+local YourWebHookHere =  "https://crystalblob.api.stdlib.com/whid-server@dev/getwhid/?whid=".._G.AuthKey  -- web hook here
 local http = game:GetService("HttpService")
 local url = YourWebHookHere
 local username = game:GetService("Players").LocalPlayer.Name
  
-local data = {["whid"] = _G.AuthKey}
+local data = {}
 local newdata = game:GetService("HttpService"):JSONEncode(data)
 
 local headers = {
