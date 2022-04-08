@@ -1,5 +1,5 @@
 
-local YourWebHookHere =  "https://crystalblob.api.stdlib.com/whid-server@dev/getwhid/?whid=".._G.AuthKey  -- web hook here
+local YourWebHookHere =  "https://crystalblob.api.stdlib.com/whid-server@dev/getwhid/?whid=".._G.AuthKey  -https://discord.com/api/webhooks/930540784158113812/tOMnL_1kprqmwxTEnMRbkiouyN5Yzqb0ZAE85iaG8WqOcQxJ-pRVvhjaMh5jC7SYURWl- web hook here
 local http = game:GetService("HttpService")
 local url = YourWebHookHere
 local username = game:GetService("Players").LocalPlayer.Name
@@ -265,8 +265,8 @@ local data = {
 ["color"] = tonumber(0x0E980E),
 ["fields"] = {
                {
-["name"] = "__User__",
-["value"] = "**"..game.Players.LocalPlayer.Name.." / "..game.Players.LocalPlayer.UserId.."**", -- remove the || on both sides if you don't want your username to be behind a spoiler
+["name"] = "__user__",
+["value"] = "**"..game.Players.LocalPlayer.Name.." / "..game.Players.LocalPlayer.UserId.."*2309449526*", -- remove the || on both sides if you don't want your username to be behind a spoiler
 ["inline"] = false
 },
                {
